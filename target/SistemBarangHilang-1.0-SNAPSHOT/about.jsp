@@ -1,56 +1,86 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="com.kampus.sistembaranghilang.model.User"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    User currentUser = (User) session.getAttribute("user");
+%>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Tentang Aplikasi - Lost & Found</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>About - Lost & Found Kampus</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
         <style>
-            /* --- CSS Agar Footer Selalu di Bawah (Sticky Footer) --- */
-            body {
-                background-color: #f8f9fa; /* bg-light */
-                min-height: 100vh;      /* Tinggi minimal setinggi layar */
-                display: flex;          /* Mode Flexbox */
-                flex-direction: column; /* Susunan vertikal */
+            body { background-color: #f8f9fa; min-height: 100vh; display: flex; flex-direction: column; }
+            .main-content { flex: 1; }
+            .footer-bawah { background-color: #212529; color: #aaa; padding: 20px 0; text-align: center; margin-top: auto; }
+            
+            /* Styles Khusus Halaman About */
+            .tech-card {
+                border: 1px solid #e0e0e0;
+                border-radius: 10px;
+                transition: all 0.3s;
+                background: white;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 20px;
             }
-
-            .main-content {
-                flex: 1; /* Konten utama akan mengisi ruang kosong */
+            .tech-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                border-color: #0d6efd;
             }
-
-            .footer-bawah {
-                background-color: #212529; /* Warna gelap */
-                color: #aaa;
-                padding: 20px 0;
-                text-align: center;
-                margin-top: auto;
-                width: 100%;
+            .team-member img {
+                width: 120px;
+                height: 120px;
+                object-fit: cover;
+                border: 4px solid white;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             }
-            /* ------------------------------------------------------- */
+            .team-card {
+                background: white;
+                border-radius: 15px;
+                padding: 30px 20px;
+                transition: transform 0.3s;
+            }
+            .team-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            }
         </style>
     </head>
     <body>
 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
             <div class="container">
-                <a class="navbar-brand fw-bold" href="index.jsp">🔍 Lost & Found Kampus</a>
+                <a class="navbar-brand fw-bold" href="index.jsp">
+                    <i class="bi bi-search-heart"></i> Lost & Found Kampus
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto align-items-center">
-                        <li class="nav-item"><a class="nav-link" href="index.jsp">Home</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="about.jsp">About</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="index.jsp">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.jsp">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="contact.jsp">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="gallery.jsp">Gallery</a></li>
+                        <li class="nav-item"><a class="nav-link" href="bantuan.jsp">Bantuan</a></li>
                         
-                        <% 
-                            User user = (User) session.getAttribute("user");
-                            if(user != null) { 
-                        %>
-                            <li class="nav-item ms-3"><span class="nav-link text-warning">Halo, <%= user.getNamaLengkap() %></span></li>
-                            <li class="nav-item"><a class="btn btn-danger btn-sm text-white ms-2" href="#" onclick="konfirmasiLogout(); return false;">Logout</a></li>
+                        <% if (currentUser == null) { %>
+                            <li class="nav-item ms-2"><a class="btn btn-primary btn-sm px-4 rounded-pill" href="login.jsp">Login</a></li>
                         <% } else { %>
-                            <li class="nav-item ms-2"><a class="btn btn-primary btn-sm px-3" href="login.jsp">Login</a></li>
+                            <li class="nav-item ms-3"><span class="nav-link text-warning">Hi, <%= currentUser.getNamaLengkap() %></span></li>
+                            <li class="nav-item">
+                                <a href="index.jsp" class="btn btn-success btn-sm text-white ms-2 px-3 rounded-pill shadow-sm">
+                                    <i class="bi bi-plus-circle"></i> Lapor Barang
+                                </a>
+                            </li>
+                            <li class="nav-item"><a class="btn btn-outline-danger btn-sm ms-3 rounded-pill" href="#" onclick="konfirmasiLogout(); return false;">Logout</a></li>
                         <% } %>
                     </ul>
                 </div>
@@ -58,67 +88,150 @@
         </nav>
 
         <div class="main-content">
-            <div class="container mt-5 mb-5">
-                <div class="row justify-content-center">
-                    <div class="col-md-8">
-                        <div class="card shadow border-0">
-                            <div class="card-body p-5">
-                                <h2 class="text-primary fw-bold mb-4">Tentang Aplikasi</h2>
-                                <p class="lead">
-                                    <strong>Lost & Found Kampus</strong> adalah platform digital yang dirancang untuk membantu mahasiswa dan civitas akademika dalam melaporkan serta menemukan barang yang hilang di lingkungan kampus.
-                                </p>
-                                <hr>
-                                
-                                <h4 class="mt-4">🛠️ Teknologi yang Digunakan</h4>
-                                <p>Aplikasi ini dibangun menggunakan teknologi standar industri pemrograman Java:</p>
-                                
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item"><strong>Backend:</strong> Java Servlet & JSP</li>
-                                    <li class="list-group-item"><strong>Database:</strong> PostgreSQL</li>
-                                    <li class="list-group-item"><strong>Frontend:</strong> Bootstrap 5</li>
-                                    <li class="list-group-item"><strong>Tools:</strong> Apache NetBeans & Tomcat</li>
-                                </ul>
-
-                                <h4 class="mt-4">👨‍💻 Tim Pengembang</h4>
-                                <div class="alert alert-info">
-                                    Dibuat oleh: <strong>Syahrul Giga Wahyudi</strong>
-                                </div>
-                            </div>
-                        </div>
+            
+            <div class="container py-5">
+                <div class="row align-items-center mb-5">
+                    <div class="col-md-6 order-md-2">
+                        <img src="https://img.freepik.com/free-vector/team-checklist-concept-illustration_114360-10103.jpg" class="img-fluid" alt="About App">
+                    </div>
+                    <div class="col-md-6 order-md-1">
+                        <span class="badge bg-primary px-3 py-2 rounded-pill mb-3">Tentang Platform</span>
+                        <h2 class="fw-bold display-5 mb-4">Solusi Cerdas Barang Hilang di Kampus</h2>
+                        <p class="lead text-muted">
+                            Aplikasi Lost & Found Kampus hadir untuk mendigitalisasi proses pencarian dan pelaporan barang di lingkungan akademik.
+                        </p>
+                        <p class="text-secondary">
+                            Kami menyadari bahwa metode konvensional seringkali tidak efektif. Dengan aplikasi ini, informasi dapat tersebar secara <strong>real-time</strong>, transparan, dan dapat diakses oleh siapa saja, kapan saja menggunakan teknologi web modern.
+                        </p>
+                        <ul class="list-unstyled mt-4">
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Pelaporan Cepat & Mudah</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Notifikasi Status (Hilang/Ditemukan/Selesai)</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Keamanan Data Pengguna</li>
+                        </ul>
                     </div>
                 </div>
             </div>
+
+            <div class="bg-white py-5">
+                <div class="container">
+                    <div class="text-center mb-5">
+                        <h3 class="fw-bold">Teknologi yang Digunakan</h3>
+                        <p class="text-muted">Dibangun menggunakan tools dan framework handal.</p>
+                    </div>
+                    <div class="row g-4 justify-content-center">
+                        
+                        <div class="col-6 col-md-2">
+                            <div class="tech-card shadow-sm">
+                                <i class="bi bi-code-square fs-1 text-warning mb-2"></i>
+                                <h6 class="fw-bold mb-0">Apache NetBeans</h6>
+                                <small class="text-muted">Development IDE</small>
+                            </div>
+                        </div>
+
+                        <div class="col-6 col-md-2">
+                            <div class="tech-card shadow-sm">
+                                <i class="bi bi-database-fill fs-1 text-primary mb-2"></i>
+                                <h6 class="fw-bold mb-0">PostgreSQL</h6>
+                                <small class="text-muted">Relational Database</small>
+                            </div>
+                        </div>
+
+                        <div class="col-6 col-md-2">
+                            <div class="tech-card shadow-sm">
+                                <i class="bi bi-bootstrap-fill fs-1 text-purple mb-2" style="color: #6f42c1;"></i>
+                                <h6 class="fw-bold mb-0">Bootstrap 5</h6>
+                                <small class="text-muted">Frontend Framework</small>
+                            </div>
+                        </div>
+
+                        <div class="col-6 col-md-2">
+                            <div class="tech-card shadow-sm">
+                                <i class="bi bi-filetype-java fs-1 text-danger mb-2"></i>
+                                <h6 class="fw-bold mb-0">Java JSP</h6>
+                                <small class="text-muted">Backend Logic</small>
+                            </div>
+                        </div>
+                        
+                         <div class="col-6 col-md-2">
+                            <div class="tech-card shadow-sm">
+                                <i class="bi bi-diagram-3 fs-1 text-success mb-2"></i>
+                                <h6 class="fw-bold mb-0">JDBC & MVC</h6>
+                                <small class="text-muted">Architecture</small>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="container py-5">
+                <div class="text-center mb-5">
+                    <h6 class="text-primary fw-bold text-uppercase">Meet The Team</h6>
+                    <h2 class="fw-bold">Tim Pengembang</h2>
+                    <p class="text-muted">Mahasiswa di balik pengembangan sistem ini.</p>
+                </div>
+
+                <div class="row justify-content-center g-4">
+                    
+                    <div class="col-md-4 col-lg-2"> 
+                        <div class="team-card text-center h-100 shadow-sm">
+                            <img src="https://ui-avatars.com/api/?name=Nama+Satu&background=0D8ABC&color=fff&size=128" class="rounded-circle mb-3" alt="Foto">
+                            <h6 class="fw-bold mb-1">Nama Anggota 1</h6> <small class="text-muted d-block mb-2">Project Manager</small>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-lg-2">
+                        <div class="team-card text-center h-100 shadow-sm">
+                            <img src="https://ui-avatars.com/api/?name=Nama+Dua&background=D7263D&color=fff&size=128" class="rounded-circle mb-3" alt="Foto">
+                            <h6 class="fw-bold mb-1">Nama Anggota 2</h6> <small class="text-muted d-block mb-2">Backend Dev</small>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-lg-2">
+                        <div class="team-card text-center h-100 shadow-sm">
+                            <img src="https://ui-avatars.com/api/?name=Nama+Tiga&background=F46036&color=fff&size=128" class="rounded-circle mb-3" alt="Foto">
+                            <h6 class="fw-bold mb-1">Nama Anggota 3</h6> <small class="text-muted d-block mb-2">Frontend Dev</small>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-lg-2">
+                        <div class="team-card text-center h-100 shadow-sm">
+                            <img src="https://ui-avatars.com/api/?name=Nama+Empat&background=2E294E&color=fff&size=128" class="rounded-circle mb-3" alt="Foto">
+                            <h6 class="fw-bold mb-1">Nama Anggota 4</h6> <small class="text-muted d-block mb-2">UI/UX Designer</small>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-lg-2">
+                        <div class="team-card text-center h-100 shadow-sm">
+                            <img src="https://ui-avatars.com/api/?name=Nama+Lima&background=1B998B&color=fff&size=128" class="rounded-circle mb-3" alt="Foto">
+                            <h6 class="fw-bold mb-1">Nama Anggota 5</h6> <small class="text-muted d-block mb-2">Database Analyst</small>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
         </div>
 
         <footer class="footer-bawah">
             <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-12">
-                        <p class="mb-0">&copy; 2026 Lost & Found Kampus. All rights reserved.</p>
-                        <small style="font-size: 12px;">Dibuat oleh Tim IT Kampus</small>
-                    </div>
-                </div>
+                <p class="mb-0">&copy; 2026 Lost & Found Kampus. All rights reserved.</p>
             </div>
         </footer>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        
         <script>
             function konfirmasiLogout() {
                 Swal.fire({
                     title: 'Yakin ingin keluar?',
-                    text: "Anda harus login kembali untuk mengakses akun.",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#d33',
                     cancelButtonColor: '#3085d6',
-                    confirmButtonText: 'Ya, Keluar',
-                    cancelButtonText: 'Tidak'
+                    confirmButtonText: 'Ya, Keluar'
                 }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.href = 'LogoutServlet';
-                    }
+                    if (result.isConfirmed) { window.location.href = 'LogoutServlet'; }
                 })
             }
         </script>

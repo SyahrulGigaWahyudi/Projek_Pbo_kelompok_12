@@ -38,27 +38,11 @@
             .img-detail { max-height: 400px; object-fit: contain; width: 100%; background-color: #f0f0f0; }
             
             /* --- CSS KHUSUS UNTUK CAROUSEL BANNER --- */
-            .carousel-item {
-                height: 450px; /* Tinggi banner diatur agar tidak terlalu besar */
-            }
-            .carousel-item img {
-                height: 100%;
-                object-fit: cover; /* Gambar akan dicrop rapi memenuhi area, tidak gepeng */
-                object-position: center;
-                filter: brightness(0.6); /* Menggelapkan gambar agar teks putih terbaca jelas */
-            }
-            .carousel-caption {
-                bottom: 20%; /* Posisi teks agak naik */
-            }
-            .carousel-caption h5 {
-                font-size: 2.5rem; /* Ukuran judul lebih besar */
-                font-weight: bold;
-                text-shadow: 2px 2px 4px rgba(0,0,0,0.7); /* Bayangan teks */
-            }
-             .carousel-caption p {
-                font-size: 1.2rem;
-                text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
-            }
+            .carousel-item { height: 450px; }
+            .carousel-item img { height: 100%; object-fit: cover; object-position: center; filter: brightness(0.6); }
+            .carousel-caption { bottom: 20%; }
+            .carousel-caption h5 { font-size: 2.5rem; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.7); }
+             .carousel-caption p { font-size: 1.2rem; text-shadow: 1px 1px 2px rgba(0,0,0,0.7); }
         </style>
     </head>
     <body>
@@ -77,6 +61,8 @@
                         <li class="nav-item"><a class="nav-link active" href="index.jsp">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="about.jsp">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="contact.jsp">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="gallery.jsp">Gallery</a></li>
+                        <li class="nav-item"><a class="nav-link" href="bantuan.jsp">Bantuan</a></li>
                         
                         <% if (currentUser == null) { %>
                             <li class="nav-item ms-2"><a class="btn btn-primary btn-sm px-4 rounded-pill" href="login.jsp">Login</a></li>
@@ -231,7 +217,7 @@
                                                         <i class="bi bi-image fs-1"></i><span class="ms-2">Tidak ada foto</span>
                                                     </div>
                                                 <% } %>
-                                            </div>
+                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <h6 class="fw-bold mb-3 text-muted">Informasi Detail</h6>
@@ -261,13 +247,11 @@
                                     </div>
                                     <div class="d-flex gap-2">
                                         <button type="button" class="btn btn-light rounded-pill px-4" data-bs-dismiss="modal">Tutup</button>
-                                         
+                                        
                                         <% 
                                             // LOGIC UNTUK CEK PEMILIK / ADMIN
                                             boolean isOwner = (currentUser.getId() == b.getUserId());
                                             boolean isAdmin = (currentUser.getRole() != null && currentUser.getRole().equalsIgnoreCase("admin"));
-                                            
-                                            // BAGIAN TOMBOL HUBUNGI PELAPOR SUDAH DIHAPUS DI SINI
                                         %>
 
                                         <% if ((isOwner || isAdmin) && !b.getStatus().equalsIgnoreCase("Selesai")) { %>
@@ -364,12 +348,7 @@
 
         <footer class="footer-bawah">
             <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-12">
-                        <p class="mb-0">&copy; 2026 Lost & Found Kampus. All rights reserved.</p>
-                        <small style="font-size: 12px;">Dibuat oleh Tim IT Kampus</small>
-                    </div>
-                </div>
+                <p class="mb-0">&copy; 2026 Lost & Found Kampus. All rights reserved.</p>
             </div>
         </footer>
 
@@ -394,7 +373,7 @@
                 })
             }
             
-            // Pesan sukses/gagal dari URL (Opsional, untuk mempercantik)
+            // Pesan sukses/gagal dari URL
             const urlParams = new URLSearchParams(window.location.search);
             const msg = urlParams.get('msg');
             if(msg === 'status_updated'){ Swal.fire('Berhasil!', 'Status laporan telah diperbarui.', 'success'); }

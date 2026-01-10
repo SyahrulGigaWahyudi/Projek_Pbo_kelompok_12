@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict P87IrdocBi5cd7tMbXTLw2M8eUtjN9ncnKQvIlU8BhkX8PiVcRQH1CQh92CrVNl
+\restrict PW6zwb91o0inzpleBsTeRJGwsJa36RJ5akRt2ckhLJaa1wKCXpVjZdqt9Ba3PW1
 
 -- Dumped from database version 18.1
 -- Dumped by pg_dump version 18.1
@@ -119,8 +119,12 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 --
 
 COPY public.laporan (id, user_id, nama_barang, deskripsi, foto, tanggal_hilang, status, lokasi) FROM stdin;
-6	1	kertas penting	kertas	1767972168826_WhatsApp Image 2026-01-04 at 08.22.49 (1).jpeg	2026-01-09	Ditemukan	kampus a
-8	4	kertas penting	kertas 	1767976240016_WhatsApp Image 2026-01-04 at 08.22.48 (2).jpeg	2026-01-09	Hilang	Gedung A Ruang 402
+12	1	Buku Atomic Habits	Buku Berjudul Atomic Habits dengan cover masih bagus	1768040857367_photo_2026-01-10_17-26-16.jpg	2026-01-08	Ditemukan	Gedung A Ruang 402
+13	1	Stopkontak	Stopkontak 4 Colokan 	1768041030948_photo_2026-01-10_17-26-06.jpg	2026-01-09	Ditemukan	Gendung B ruang 301
+14	1	Tws putih	Tws Merek Robot warna putih	1768041124247_photo_2026-01-10_17-26-14.jpg	2026-01-07	Ditemukan	Gendung B ruang 303
+15	2	Chager Handphone	kepala Chager warna hijau dan kabel warna putih merek robot	1768041293028_photo_2026-01-10_17-26-12.jpg	2026-01-10	Hilang	Gedung A Ruang 403
+16	4	Tws hitam	tws hitam merek ripple	1768041381764_photo_2026-01-10_17-26-10.jpg	2026-01-10	Hilang	Gendung B ruang 302
+17	2	Powerbank 	powerbank 20.000 mah merek vention warna hitam	1768041462723_photo_2026-01-10_17-26-09.jpg	2026-01-10	Ditemukan	Gedung A Ruang 401
 \.
 
 
@@ -139,7 +143,7 @@ COPY public.users (id, nama_lengkap, email, password, role) FROM stdin;
 -- Name: laporan_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.laporan_id_seq', 9, true);
+SELECT pg_catalog.setval('public.laporan_id_seq', 17, true);
 
 
 --
@@ -185,5 +189,5 @@ ALTER TABLE ONLY public.laporan
 -- PostgreSQL database dump complete
 --
 
-\unrestrict P87IrdocBi5cd7tMbXTLw2M8eUtjN9ncnKQvIlU8BhkX8PiVcRQH1CQh92CrVNl
+\unrestrict PW6zwb91o0inzpleBsTeRJGwsJa36RJ5akRt2ckhLJaa1wKCXpVjZdqt9Ba3PW1
 
