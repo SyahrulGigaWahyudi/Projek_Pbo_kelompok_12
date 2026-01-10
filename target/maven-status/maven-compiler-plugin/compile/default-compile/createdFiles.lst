@@ -1,0 +1,14 @@
+com\kampus\sistembaranghilang\controller\RegisterServlet.class
+com\kampus\sistembaranghilang\dao\UserDAO.class
+com\kampus\sistembaranghilang\model\User.class
+com\kampus\sistembaranghilang\dao\LaporanDAO.class
+com\kampus\sistembaranghilang\resources\JakartaEE10Resource.class
+com\kampus\sistembaranghilang\db\Koneksi.class
+com\kampus\sistembaranghilang\servlet\LogoutServlet.class
+com\kampus\sistembaranghilang\model\Laporan.class
+com\kampus\sistembaranghilang\controller\LoginServlet.class
+com\kampus\sistembaranghilang\controller\UpdateStatusServlet.class
+com\kampus\sistembaranghilang\controller\HapusLaporanServlet.class
+com\kampus\sistembaranghilang\controller\StatusServlet.class
+com\kampus\sistembaranghilang\JakartaRestConfiguration.class
+com\kampus\sistembaranghilang\controller\LaporServlet.class
