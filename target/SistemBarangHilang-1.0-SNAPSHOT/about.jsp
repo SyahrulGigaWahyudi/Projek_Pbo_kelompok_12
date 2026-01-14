@@ -33,22 +33,34 @@
                 box-shadow: 0 10px 20px rgba(0,0,0,0.1);
                 border-color: #0d6efd;
             }
-            .team-member img {
-                width: 120px;
-                height: 120px;
+            
+            /* PERUBAHAN DISINI: Memperbesar Ukuran Foto Tim */
+            .team-card img {
+                width: 180px;  /* Diperbesar dari 120px */
+                height: 180px; /* Diperbesar dari 120px */
                 object-fit: cover;
-                border: 4px solid white;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                border: 5px solid white; /* Border ditebalkan sedikit */
+                box-shadow: 0 8px 20px rgba(0,0,0,0.15); /* Shadow dipertegas */
             }
+            
             .team-card {
                 background: white;
                 border-radius: 15px;
-                padding: 30px 20px;
+                padding: 40px 20px; /* Padding ditambah biar lega */
                 transition: transform 0.3s;
             }
             .team-card:hover {
                 transform: translateY(-5px);
                 box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            }
+            
+            /* Style Khusus ERD Container */
+            .erd-container {
+                background: white;
+                padding: 10px;
+                border-radius: 15px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                border: 1px solid #dee2e6;
             }
         </style>
     </head>
@@ -75,11 +87,7 @@
                             <li class="nav-item ms-2"><a class="btn btn-primary btn-sm px-4 rounded-pill" href="login.jsp">Login</a></li>
                         <% } else { %>
                             <li class="nav-item ms-3"><span class="nav-link text-warning">Hi, <%= currentUser.getNamaLengkap() %></span></li>
-                            <li class="nav-item">
-                                <a href="index.jsp" class="btn btn-success btn-sm text-white ms-2 px-3 rounded-pill shadow-sm">
-                                    <i class="bi bi-plus-circle"></i> Lapor Barang
-                                </a>
-                            </li>
+                            
                             <li class="nav-item"><a class="btn btn-outline-danger btn-sm ms-3 rounded-pill" href="#" onclick="konfirmasiLogout(); return false;">Logout</a></li>
                         <% } %>
                     </ul>
@@ -92,7 +100,7 @@
             <div class="container py-5">
                 <div class="row align-items-center mb-5">
                     <div class="col-md-6 order-md-2">
-                        <img src="https://img.freepik.com/free-vector/team-checklist-concept-illustration_114360-10103.jpg" class="img-fluid" alt="About App">
+                        <img src="image/istockphoto-477273563-612x612-removebg-preview.png" class="img-fluid" alt="About App">
                     </div>
                     <div class="col-md-6 order-md-1">
                         <span class="badge bg-primary px-3 py-2 rounded-pill mb-3">Tentang Platform</span>
@@ -165,49 +173,80 @@
             </div>
 
             <div class="container py-5">
-                <div class="text-center mb-5">
-                    <h6 class="text-primary fw-bold text-uppercase">Meet The Team</h6>
-                    <h2 class="fw-bold">Tim Pengembang</h2>
-                    <p class="text-muted">Mahasiswa di balik pengembangan sistem ini.</p>
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 text-center">
+                        <div class="mb-4">
+                            <span class="badge bg-info text-dark px-3 py-2 rounded-pill mb-2">Database Architecture</span>
+                            <h3 class="fw-bold">Entity Relationship Diagram (ERD)</h3>
+                            <p class="text-muted">Struktur rancangan database yang menghubungkan User dan Laporan.</p>
+                        </div>
+                        
+                        <div class="erd-container">
+                            <img src="image/Diagram ERD Lost&found.png" 
+                                 class="img-fluid rounded" 
+                                 alt="Diagram ERD">
+                        </div>
+                        
+                    </div>
                 </div>
+            </div>
 
-                <div class="row justify-content-center g-4">
-                    
-                    <div class="col-md-4 col-lg-2"> 
-                        <div class="team-card text-center h-100 shadow-sm">
-                            <img src="https://ui-avatars.com/api/?name=Nama+Satu&background=0D8ABC&color=fff&size=128" class="rounded-circle mb-3" alt="Foto">
-                            <h6 class="fw-bold mb-1">Nama Anggota 1</h6> <small class="text-muted d-block mb-2">Project Manager</small>
-                        </div>
+           <div class="bg-white py-5"> 
+                <div class="container">
+                    <div class="text-center mb-5">
+                        <h6 class="text-primary fw-bold text-uppercase">Meet The Team</h6>
+                        <h2 class="fw-bold">Tim Pengembang</h2>
+                        <p class="text-muted">Mahasiswa di balik pengembangan sistem ini.</p>
                     </div>
 
-                    <div class="col-md-4 col-lg-2">
-                        <div class="team-card text-center h-100 shadow-sm">
-                            <img src="https://ui-avatars.com/api/?name=Nama+Dua&background=D7263D&color=fff&size=128" class="rounded-circle mb-3" alt="Foto">
-                            <h6 class="fw-bold mb-1">Nama Anggota 2</h6> <small class="text-muted d-block mb-2">Backend Dev</small>
+                    <div class="row justify-content-center g-4">
+                        
+                        <div class="col-md-6 col-lg-4"> 
+                            <div class="team-card text-center h-100 shadow-sm">
+                                <img src="image/anggota1.jpeg" class="rounded-circle mb-3" alt="Foto">
+                                <h6 class="fw-bold mb-1">Syahrul Giga Wahyudi</h6>
+                                <small class="text-muted d-block mb-2">0110224085</small>
+                                <small class="text-muted d-block mb-2">Backend Dev + Frontend Dev</small>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-4 col-lg-2">
-                        <div class="team-card text-center h-100 shadow-sm">
-                            <img src="https://ui-avatars.com/api/?name=Nama+Tiga&background=F46036&color=fff&size=128" class="rounded-circle mb-3" alt="Foto">
-                            <h6 class="fw-bold mb-1">Nama Anggota 3</h6> <small class="text-muted d-block mb-2">Frontend Dev</small>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="team-card text-center h-100 shadow-sm">
+                                <img src="image/anggota2.jpeg" class="rounded-circle mb-3" alt="Foto">
+                                <h6 class="fw-bold mb-1">Anfasa Umar</h6>
+                                <small class="text-muted d-block mb-2">0110224130</small>
+                                <small class="text-muted d-block mb-2">Frontend Dev</small>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-4 col-lg-2">
-                        <div class="team-card text-center h-100 shadow-sm">
-                            <img src="https://ui-avatars.com/api/?name=Nama+Empat&background=2E294E&color=fff&size=128" class="rounded-circle mb-3" alt="Foto">
-                            <h6 class="fw-bold mb-1">Nama Anggota 4</h6> <small class="text-muted d-block mb-2">UI/UX Designer</small>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="team-card text-center h-100 shadow-sm">
+                                <img src="image/anggota3.jpeg" class="rounded-circle mb-3" alt="Foto">
+                                <h6 class="fw-bold mb-1">Fathan aqilla bestari</h6> 
+                                <small class="text-muted d-block mb-2">0110224024</small>
+                                <small class="text-muted d-block mb-2">Frontend Dev</small>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-4 col-lg-2">
-                        <div class="team-card text-center h-100 shadow-sm">
-                            <img src="https://ui-avatars.com/api/?name=Nama+Lima&background=1B998B&color=fff&size=128" class="rounded-circle mb-3" alt="Foto">
-                            <h6 class="fw-bold mb-1">Nama Anggota 5</h6> <small class="text-muted d-block mb-2">Database Analyst</small>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="team-card text-center h-100 shadow-sm">
+                                <img src="image/anggota4.jpeg" class="rounded-circle mb-3" alt="Foto">
+                                <h6 class="fw-bold mb-1">Aqila Apta Shohan</h6> 
+                                <small class="text-muted d-block mb-2">0110224129</small>
+                                <small class="text-muted d-block mb-2">Frontend Dev</small>
+                            </div>
                         </div>
-                    </div>
 
+                        <div class="col-md-6 col-lg-4">
+                            <div class="team-card text-center h-100 shadow-sm">
+                                <img src="image/anggota5.jpeg" class="rounded-circle mb-3" alt="Foto">
+                                <h6 class="fw-bold mb-1">M luthfi Sahrul fadilah</h6>
+                                <small class="text-muted d-block mb-2">0110224023</small>
+                                <small class="text-muted d-block mb-2">Frontend Dev</small>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
 

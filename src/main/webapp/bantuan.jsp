@@ -65,11 +65,7 @@
                             <li class="nav-item ms-2"><a class="btn btn-primary btn-sm px-4 rounded-pill" href="login.jsp">Login</a></li>
                         <% } else { %>
                             <li class="nav-item ms-3"><span class="nav-link text-warning">Hi, <%= currentUser.getNamaLengkap() %></span></li>
-                            <li class="nav-item">
-                                <a href="index.jsp" class="btn btn-success btn-sm text-white ms-2 px-3 rounded-pill shadow-sm">
-                                    <i class="bi bi-plus-circle"></i> Lapor Barang
-                                </a>
-                            </li>
+                            
                             <li class="nav-item"><a class="btn btn-outline-danger btn-sm ms-3 rounded-pill" href="#" onclick="konfirmasiLogout(); return false;">Logout</a></li>
                         <% } %>
                     </ul>

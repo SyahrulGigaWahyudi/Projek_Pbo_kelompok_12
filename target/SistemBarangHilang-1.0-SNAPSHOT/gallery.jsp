@@ -73,11 +73,7 @@
                             <li class="nav-item ms-2"><a class="btn btn-primary btn-sm px-4 rounded-pill" href="login.jsp">Login</a></li>
                         <% } else { %>
                             <li class="nav-item ms-3"><span class="nav-link text-warning">Hi, <%= currentUser.getNamaLengkap() %></span></li>
-                            <li class="nav-item">
-                                <a href="index.jsp" class="btn btn-success btn-sm text-white ms-2 px-3 rounded-pill shadow-sm">
-                                    <i class="bi bi-plus-circle"></i> Lapor Barang
-                                </a>
-                            </li>
+                            
                             <li class="nav-item"><a class="btn btn-outline-danger btn-sm ms-3 rounded-pill" href="#" onclick="konfirmasiLogout(); return false;">Logout</a></li>
                         <% } %>
                     </ul>
@@ -99,64 +95,59 @@
                     
                     <div class="col-md-4">
                         <div class="gallery-item">
-                            <img src="https://img.freepik.com/free-photo/group-diverse-people-having-business-meeting_53876-25060.jpg" alt="Foto Full Team">
+                            <img src="image/galeri1.jpeg" alt="Foto Full Team">
                             <div class="gallery-caption">
                                 <h6 class="fw-bold mb-1">Full Squad Team</h6>
-                                <small class="text-muted">Diskusi Proyek di Kampus</small>
+                                
                             </div>
                         </div>
                     </div>
 
                     <div class="col-md-4">
                         <div class="gallery-item">
-                            <img src="https://img.freepik.com/free-photo/programming-background-with-person-working-with-codes-computer_23-2150010125.jpg" alt="Coding Session">
+                            <img src="image/galeri2.jpeg" alt="Coding Session">
                             <div class="gallery-caption">
                                 <h6 class="fw-bold mb-1">Coding Session</h6>
-                                <small class="text-muted">Begadang ngerjain Backend</small>
+                                
                             </div>
                         </div>
                     </div>
 
                     <div class="col-md-4">
                         <div class="gallery-item">
-                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Ketua Kelompok">
+                            <img src="image/galeri3.jpeg" alt="Ketua Kelompok">
                             <div class="gallery-caption">
-                                <h6 class="fw-bold mb-1">Si Paling Project Manager</h6>
-                                <small class="text-muted">Presentasi Progress</small>
+                                <h6 class="fw-bold mb-1">Diskusi Projek</h6>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-md-4">
                         <div class="gallery-item">
-                            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Diskusi">
+                            <img src="image/galeri4.jpeg" alt="Diskusi">
                             <div class="gallery-caption">
-                                <h6 class="fw-bold mb-1">Diskusi Database</h6>
-                                <small class="text-muted">Merancang ERD PostgreSQL</small>
+                                <h6 class="fw-bold mb-1">Diskusi Desain UI</h6>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-md-4">
                         <div class="gallery-item">
-                            <img src="https://images.unsplash.com/photo-1531545514256-b1400bc00f31?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Santai">
+                            <img src="image/galeri5.jpeg">
                             <div class="gallery-caption">
-                                <h6 class="fw-bold mb-1">Break Time</h6>
-                                <small class="text-muted">Makan-makan setelah selesai fitur</small>
+                                <h6 class="fw-bold mb-1">Diskusi Desain UI</h6>
                             </div>
                         </div>
                     </div>
                     
                     <div class="col-md-4">
                         <div class="gallery-item">
-                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Revisi">
+                            <img src="image/galeri6.jpeg" alt="Revisi">
                             <div class="gallery-caption">
-                                <h6 class="fw-bold mb-1">Revisi Bersama</h6>
-                                <small class="text-muted">Memperbaiki bug UI</small>
-                            </div>
+                                <h6 class="fw-bold mb-1">Coding Session</h6>
+                            </div> 
                         </div>
                     </div>
-
                 </div>
             </div>
             
