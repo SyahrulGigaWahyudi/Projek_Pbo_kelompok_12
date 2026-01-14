@@ -1,4 +1,4 @@
-<%@page import="com.kampus.sistembaranghilang.model.User"%>
+    <%@page import="com.kampus.sistembaranghilang.model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     User currentUser = (User) session.getAttribute("user");
